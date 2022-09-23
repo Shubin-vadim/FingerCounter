@@ -26,7 +26,6 @@ for imgPath in mylist:
 
 while True:
     sccuess, frame = cap.read()  # чтение записи камеры
-    # frame[0:200, 200:400] = overlayList[random.randint(0, 5)]
     frame = detector.find_hands(frame)  # нахождение контуров пальцев
     lmdist = detector.find_position(frame, draw=False)  # нахождение позиции точек пальцев, без их рисовки
 
@@ -45,10 +44,7 @@ while True:
         print(fingers)
         totalFingers = fingers.count(1)
         frame[0:200, 0:200] = overlayList[totalFingers]
-    #cnt = 0
 
-    # h,w,c = overlayList[0].shape
-    # cv2.rectangle(frame, (0,0), (100,100), (132, 43, 184), cv2.FILLED)
         cv2.putText(frame, 'Score: ' + str(totalFingers), (410, 55), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 2)
     cv2.imshow('Rez', frame)
     cv2.waitKey(1)
