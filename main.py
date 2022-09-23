@@ -11,14 +11,14 @@ wCam, hCam = 720, 640
 cap = cv2.VideoCapture(0)
 cap.set(3, wCam)
 cap.set(4, hCam)
-
+print(os.getcwd())
 # получение списка изображений
 folderPath = 'images'
 mylist = os.listdir(folderPath)
 overlayList = []
-detector = htm.handDetector(detectionCon=0.75)
+detector = htm.MpHandTracking(min_threshold=0.75)
 tipIds = [4, 8, 12, 16, 20]
-
+print(mylist)
 for imgPath in mylist:
     img = cv2.imread(f"{folderPath}/{imgPath}")
     img = cv2.resize(img, (200, 200))
@@ -27,8 +27,8 @@ for imgPath in mylist:
 while True:
     sccuess, frame = cap.read()  # чтение записи камеры
     # frame[0:200, 200:400] = overlayList[random.randint(0, 5)]
-    frame = detector.findHands(frame)  # нахождение контуров пальцев
-    lmdist = detector.findPosition(frame, draw=False)  # нахождение позиции точек пальцев, без их рисовки
+    frame = detector.find_hands(frame)  # нахождение контуров пальцев
+    lmdist = detector.find_position(frame, draw=False)  # нахождение позиции точек пальцев, без их рисовки
 
     if len(lmdist) > 0:  # проверка на наличии найденных точек
         fingers = []
