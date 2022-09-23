@@ -1,4 +1,4 @@
-# FingerCounter
+# Simple finger counter game
 
 1. [Install dependencies](#installation)
 2. [Run application](#run)
