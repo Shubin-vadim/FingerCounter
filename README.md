@@ -5,11 +5,11 @@
 
 # <a name="installation">Install dependencies</a>
 ```
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 ```
 # <a name="run">Run application</a>
 
 ```
-python main.py
+python3 main.py
 ```
 
